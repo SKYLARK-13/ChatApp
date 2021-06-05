@@ -48,12 +48,21 @@
   flex: 1;
   background-color: white;
   overflow: scroll;
+  overflow-x: hidden;
 }
-.chatUser{
+.chatUser {
   display: flex;
+  cursor: pointer;
   align-items: center;
   width: 100%;
+  padding: 10px;
 }
-.chatUser > h5{
+.chatUser > h5 {
   margin-left: 10px;
+}
+.new_chat {
+  background-color: green;
+}
+.new_chat > Button {
+  color: white;
 }

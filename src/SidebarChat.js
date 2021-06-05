@@ -22,15 +22,15 @@ function SidebarChat({ id, name, addNewChat }) {
     setSeed(Math.floor(Math.random() * 5000));
   }, []);
 
-  const createChat = () => {
-    const roomName = prompt("please enter  name for chat room");
+  // const createChat = () => {
+  //   const roomName = prompt("please enter  name for chat room");
 
-    if (roomName) {
-      db.collection("rooms").add({
-        name: roomName,
-      });
-    }
-  };
+  //   if (roomName) {
+  //     db.collection("rooms").add({
+  //       name: roomName,
+  //     });
+  //   }
+  // };
 
   return !addNewChat ? (
     <Link to={`/rooms/${id}`}>
@@ -43,9 +43,7 @@ function SidebarChat({ id, name, addNewChat }) {
       </div>
     </Link>
   ) : (
-    <div onClick={createChat} className="sidebarChat">
-      <h2 className="plus">+</h2>
-    </div>
+    <div>{/* <h2 className="plus">+</h2> */}</div>
   );
 }
 

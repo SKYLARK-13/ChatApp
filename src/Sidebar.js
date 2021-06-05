@@ -37,6 +37,8 @@ function Sidebar() {
   const [rooms, setRooms] = useState([]);
   const [{ user, clickedUid }, dispatch] = useStateValue();
   const [userList, setUserList] = useState([]);
+  const [chatList, setChatList] = useState([]);
+
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const uid = auth.currentUser?.uid;
@@ -67,6 +69,12 @@ function Sidebar() {
   }, []);
 
   const createChat = async () => {
+    await db
+      .collection("rooms")
+      .get()
+      .then((doc) => {
+        setChatList(doc.docs);
+      });
     handleOpen();
     await db
       .collection("Users")
@@ -76,7 +84,16 @@ function Sidebar() {
       });
   };
 
-  const openChat = () => {};
+  const openChat = async (event) => {
+    const chatName = event.target.innerText;
+    if (chatName) {
+      await db.collection("rooms").add({
+        name: chatName,
+      });
+    }
+
+    setOpen(false);
+  };
 
   return (
     <div className="sidebar">
@@ -98,8 +115,8 @@ function Sidebar() {
               return (
                 value.id !== uid && (
                   <div onClick={() => {}} key={value.id} className="chatUser">
-                    <Avatar />
-                    <h5>{value.data().name}</h5>
+                    <Avatar src={value.data().photoURL} />
+                    <h5 onClick={openChat}>{value.data().name}</h5>
                   </div>
                 )
               );
@@ -140,7 +157,7 @@ function Sidebar() {
           <SidebarChat key={room.id} id={room.id} name={room.data.name} />
         ))}
       </div>
-      <div>
+      <div className="new_chat">
         <Button fullWidth onClick={createChat}>
           <Add></Add>
         </Button>

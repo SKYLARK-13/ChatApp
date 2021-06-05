@@ -57,7 +57,7 @@ function Chat() {
       <div className="chat_header">
         <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`} />
         <div className="chat_headerInfo">
-          <h3>{roomName}</h3>
+          <h3>{roomName || "Demo Chat"}</h3>
           <p>
             Last seen{" "}
             {new Date(
@@ -65,17 +65,7 @@ function Chat() {
             ).toUTCString()}
           </p>
         </div>
-        <div className="chat_headerRight">
-          <IconButton>
-            <SearchOutlined />
-          </IconButton>
-          <IconButton>
-            <AttachFile />
-          </IconButton>
-          <IconButton>
-            <MoreVert />
-          </IconButton>
-        </div>
+       
       </div>
 
       <div className="chat_body">

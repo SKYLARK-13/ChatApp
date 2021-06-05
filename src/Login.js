@@ -13,7 +13,7 @@ function Login() {
       .then((result) => {
         db.collection("Users").doc(result.user.uid).set({
           name: result.user.displayName,
-          photoUrl: result.user.displayName,
+          photoUrl: result.user.photoURL,
           email: result.user.email,
           uId: result.user.uid,
         });
@@ -29,11 +29,11 @@ function Login() {
     <div className="login">
       <div className="login_container">
         <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/598px-WhatsApp.svg.png"
+          src="https://play-lh.googleusercontent.com/cF_oWC9Io_I9smEBhjhUHkOO6vX5wMbZJgFpGny4MkMMtz25iIJEh2wASdbbEN7jseAx"
           alt=""
         />
         <div className="login_text">
-          <h1>Sign In to WhatsApp</h1>
+          <h1>Sign In to Chit Chat</h1>
         </div>
 
         <Button onClick={signIn}>Sign In With Google</Button>

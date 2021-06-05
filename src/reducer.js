@@ -5,23 +5,22 @@ export const initialState = {
 
 export const actionTypes = {
   SET_USER: "SET_USER",
-  SET_CLICKED : "SET_CLICKED"
+  SET_CLICKED: "SET_CLICKED",
 };
 
 const reducer = (state, action) => {
-  console.log(action);
+  // console.log(action);
   switch (action.type) {
     case actionTypes.SET_USER:
       return {
         ...state,
         user: action.user,
       };
-     case actionTypes.SET_CLICKED:
-       return{
-         ...state,
-         clickedUid:action.clickedUid
-       };
-        
+    case actionTypes.SET_CLICKED:
+      return {
+        ...state,
+        clickedUid: action.clickedUid,
+      };
 
     default:
       return state;
